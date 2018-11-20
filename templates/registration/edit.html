@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Bilgilerini Düzenle{% endblock %}
+{% block content %}
+<h1>Bilgilerini Düzenle</h1>
+<p>Aşağıdaki formu kullanarak bilgilerini düzenleyebilirsin:</p>
+<form action="." method="post" enctype="multipart/form-data">
+<div class="login">
+
+{{ user_form.as_p }}
+{{ profile_form.as_p }}
+
+</div>
+{% csrf_token %}
+<p><input type="submit" class="btn btn-primary" value="Kaydet"></p>
+</form>
+{% endblock %}

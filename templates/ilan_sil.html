@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="col-lg-10 col-md-12 col-sm-12 col-xs-12">
+    {% if ilan.user == user %}
+        <form method="post">{% csrf_token %}
+            {{ form.as_p }}
+            İlanı silmek istediğinize emin misiniz?
+            <div>
+            <input type="submit" value="Sill" class="btn btn-danger" href="../{{ ilan.id }}/delete">  <a class="btn btn-success" href="../{{ ilan.id }}/edit">Hayır, düzenle</a>
+            </div>
+        </form>
+    {% endif %}
+</div>
+{% endblock %}

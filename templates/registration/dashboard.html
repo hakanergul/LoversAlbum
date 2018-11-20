@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+
+{% block title %}Kullanıcı Paneli{% endblock %}
+{% block content %}
+
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
+
+<h1>Kullanıcı Paneli</h1>
+<p>Kullanıcı panelinize hoşgeldiniz.</p>
+<p>Merhaba {{ user.first_name }}, kullanıcı bilgilerini <a href="{% url 'edit' %}">düzenleyebilirsin</a></p>
+
+{% if not ilanim == '' %}
+
+İlanın henüz yok, istiyorsan <a href="../ilan/ekle">ekle</a>
+
+{% else %}
+<h4>
+<a href="../ilan/{{ user.ilan.id}}/edit">{{ user.ilan.baslik }}</a>{% if not user.ilan.yayinlandimi %}<em>editör onayı bekleniyor</em>{% endif %}
+</h4>
+{% endif %}
+
+{% if yorumlarim %}
+<h3>Yorumlarım</h3>
+
+{% for yorumum in yorumlarim %}
+   <div class="yorum-liste"> {{ yorumum.ilan.user.first_name }} {{ yorumum.ilan.user.last_name }} {{ yorumum.ilan.baslik }} - <em>{{ yorumum.created }}</em>
+    {{ yorumum.yorum_metni }} 
+    </div>
+{% endfor %}
+{% endif %}
+
+
+{% if user.ilan.yorumlar %}
+<h3>İlanıma Yapılan Yorumlar</h3>
+{% for yapilan_yorum in ilanima_yorumlar %}
+       <div class="yorum-liste"> {{ yapilan_yorum.user.first_name }} {{ yapilan_yorum.user.last_name }}  - <em>{{ yapilan_yorum.created }}</em>
+    {{ yapilan_yorum.yorum_metni }} 
+    </div>
+{% endfor %}
+{% endif %}
+
+<h3>Mutluluk Dilediklerim</h3>
+{% if mutluluk_dilediklerim  %}
+{% for item in mutluluk_dilediklerim  %}
+       <span class="kull-liste"> {{ item.user }}</span>
+{% endfor %}
+{% endif %}
+
+<h3>Mutluluk Dileyenler</h3>
+
+{% if mutluluk_dileyenler  %}
+{% for item in mutluluk_dileyenler  %}
+       <span class="kull-liste"> {{ item.user }}</span>
+{% endfor %}
+{% endif %}
+
+</div>
+{% endblock %}

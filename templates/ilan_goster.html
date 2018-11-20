@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-sm-12 col-xs-12">
+        
+<div class="ilan-metni">{{ ilan.metin | safe}}</div>
+<div class="ilan-alti">
+
+<div class="ilan-begeni-paylasim">
+    {% if user.is_authenticated %}
+        <button id="likes" type="submit" type="button">
+    <i id="kalp" class="{{ begeni_kalp }} fa-heart"></i></button> <span id="mutluluk_sayac">{{ mutluluk_dileyen_sayisi }}</span>  
+    {% else %}
+    <i id="kalp" class="far fa-heart"></i></button> <span id="mutluluk_sayac">{{ mutluluk_dileyen_sayisi }}</span>  
+
+    {% endif %}<i class="far fa-eye"></i>  {{ ilan.goruntulenme }}
+    <a href="http://www.facebook.com/share.php?u={{ request.META.HTTP_HOST }}/ilan/{{ ilan.id }}"><i class="fab fa-facebook-square fa-2x"></i></a>
+    <a href="https://twitter.com/intent/tweet?url={{ request.META.HTTP_HOST }}/ilan/{{ ilan.id }}"><i class="fab fa-twitter-square fa-2x"></i></a>
+    <a href="https://twitter.com/intent/tweet?url={{ request.META.HTTP_HOST }}/ilan/{{ ilan.id }}"><i class="fab fa-instagram fa-2x"></i></a>
+    <a href="whatsapp://send?text={{ request.META.HTTP_HOST }}/ilan/{{ ilan.id }}" data-action="share/whatsapp/share"><i class="fab fa-whatsapp-square fa-2x"></i></a>
+</div>
+        
+
+{% if new_comment %}
+<p>Yorumunuz onaylandıktan sonra yayınlanacaktır.</p>
+{% else %}
+<form action="" method="POST">
+{{ comment_form.as_p }}
+{% csrf_token %}
+<p><input type="submit" value="yorum ekle"></p>
+</form>
+{% endif %}
+        {% if ilan.user == user %}
+                <p><a href="{{ ilan.id }}/edit">Düzenle</a> | <a href="{{ ilan.id }}/delete">İlanı Sil</a><p>
+
+                    {% with yorumlar.count as total_comments %}
+                    <h4>
+                    {{ total_comments }} yorum
+                    </h4>
+                    {% endwith %}        
+        {% endif %}
+        {% for comment in yorumlar %}
+        <div class="comment">
+            <p class="info">
+            Comment {{ forloop.counter }} by {{ comment.user }}
+            {{ comment.created }}
+            </p>
+            {{ comment.yorum_metni|linebreaks }}
+            </div>
+            {% empty %}
+            <p>Henüz yorum yapılmadı.</p>
+        {% endfor %}
+        <div class="social-icons">
+                <ul class="list-unstyled list-inline text-center mb-0">
+                    <li class="list-unstyled-item">
+                    <a href="#">
+                        <i class="fab fa-twitter fa-2x"></i>
+                    </a>
+                    </li>
+                    <li class="list-unstyled-item">
+                    <a href="#">
+                        <i class="fab fa-facebook-f fa-2x"></i>
+                    </a>
+                    </li>
+                    <li class="list-unstyled-item">
+                    <a href="#">
+                        <i class="fab fa-instagram fa-2x"></i>
+                    </a>
+                    </li>
+                </ul>
+        </div>
+    </div>
+</div>
+<script>
+$("#likes").click(function(e) {
+    e.preventDefault();
+    
+    $.ajax({
+        type: "POST",
+        url: "{{ BASE_URL }}/ilan/{{ ilan.id }}/mutlulukdile",
+        data: { csrfmiddlewaretoken: "{{ csrf_token }}"},
+        dataType: "json",
+        success: function(json) {
+            
+            $('#mutluluk_sayac').text(json.mutluluk_dileyen_sayisi);
+           if(json.begeni == 'btn-warning'){ 
+                $("#kalp").removeClass('far');
+                $('#kalp').addClass('fas');
+           }else{
+                $("#kalp").removeClass('fas');
+                $('#kalp').addClass('far');
+           }
+        }
+    });
+  });
+</script>
+{% endblock %}
