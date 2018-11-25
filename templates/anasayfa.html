@@ -43,7 +43,10 @@
 <div class="scrollable col-lg-4 col-md-4 col-sm-12 col-xs-12">
     <div class="items">
     {% for ilan in ilanlar %}
-        <div class="item"> {{ ilan.metin | truncatewords_html:16 |safe }} </div>
+        <div class="item"> <a href='../ilan/{{ ilan.id }}'>{{ ilan.baslik }} </a> <img src="{{ilan.ilan_foto.url}}"> 
+        <p><span><em>{{ ilan.user }}</em> ~{{ ilan.olusturma_tarihi|timesince }}
+    <i id="kalp" class="far fa-heart"></i></button> <span id="mutluluk_sayac">{% if ilan.mutluluk_dileyenler.count %}{{ ilan.mutluluk_dileyenler.count }}{% else %}0{% endif %}</span>     
+      </p></div>
     {% endfor%}
     
     </div>

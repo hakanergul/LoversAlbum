@@ -24,11 +24,13 @@
 {% if new_comment %}
 <p>Yorumunuz onaylandıktan sonra yayınlanacaktır.</p>
 {% else %}
-<form action="" method="POST">
-{{ comment_form.as_p }}
-{% csrf_token %}
-<p><input type="submit" value="yorum ekle"></p>
-</form>
+    {% if  user.is_authenticated %}
+        <form action="" method="POST">
+        {{ comment_form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value="yorum ekle"></p>
+        </form>
+    {% endif %}
 {% endif %}
         {% if ilan.user == user %}
                 <p><a href="{{ ilan.id }}/edit">Düzenle</a> | <a href="{{ ilan.id }}/delete">İlanı Sil</a><p>
@@ -48,7 +50,11 @@
             {{ comment.yorum_metni|linebreaks }}
             </div>
             {% empty %}
-            <p>Henüz yorum yapılmadı.</p>
+            <div class="card">
+            <div class="card-body">
+                Henüz yorum yapılmadı.
+            </div>
+            </div>
         {% endfor %}
         <div class="social-icons">
                 <ul class="list-unstyled list-inline text-center mb-0">

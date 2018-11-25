@@ -40,16 +40,17 @@
 {% endfor %}
 {% endif %}
 
-<h3>Mutluluk Dilediklerim</h3>
 {% if mutluluk_dilediklerim  %}
+<h3>Mutluluk Dilediklerim</h3>
 {% for item in mutluluk_dilediklerim  %}
        <span class="kull-liste"> {{ item.user }}</span>
 {% endfor %}
 {% endif %}
 
-<h3>Mutluluk Dileyenler</h3>
 
 {% if mutluluk_dileyenler  %}
+<h3>Mutluluk Dileyenler</h3>
+
 {% for item in mutluluk_dileyenler  %}
        <span class="kull-liste"> {{ item.user }}</span>
 {% endfor %}
