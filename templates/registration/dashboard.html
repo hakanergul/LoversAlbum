@@ -10,7 +10,7 @@
 <p>Kullanıcı panelinize hoşgeldiniz.</p>
 <p>Merhaba {{ user.first_name }}, kullanıcı bilgilerini <a href="{% url 'edit' %}">düzenleyebilirsin</a></p>
 
-{% if not ilanim == '' %}
+{% if ilanim == '' %}
 
 İlanın henüz yok, istiyorsan <a href="../ilan/ekle">ekle</a>
 

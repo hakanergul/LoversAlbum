@@ -6,7 +6,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 class Ilan(models.Model):
     baslik = models.CharField(max_length=30)
     metin =  RichTextUploadingField()
-    ilan_foto = models.ImageField(upload_to='ilan_fotolari', default='350x150.png')
+    ilan_foto = models.ImageField(upload_to='ilan_fotolari/', default='350x150.png')
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     mutluluk_dileyenler = models.ManyToManyField(settings.AUTH_USER_MODEL, blank= True, related_name = 'mutluluk_dilenen_ilan')
     goruntulenme = models.PositiveIntegerField(default = 0)
