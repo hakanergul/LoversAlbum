@@ -8,7 +8,7 @@
 
 <div class="ilan-begeni-paylasim">
     {% if user.is_authenticated %}
-        <button id="likes" type="submit" type="button">
+        <button id="likes" type="submit">
     <i id="kalp" class="{{ begeni_kalp }} fa-heart"></i></button> <span id="mutluluk_sayac">{{ mutluluk_dileyen_sayisi }}</span>  
     {% else %}
     <i id="kalp" class="far fa-heart"></i></button> <span id="mutluluk_sayac">{{ mutluluk_dileyen_sayisi }}</span>  
@@ -25,11 +25,16 @@
 <p>Yorumunuz onaylandıktan sonra yayınlanacaktır.</p>
 {% else %}
     {% if  user.is_authenticated %}
+    <div id="yorum_form">
         <form action="" method="POST">
         {{ comment_form.as_p }}
         {% csrf_token %}
-        <p><input type="submit" value="yorum ekle"></p>
+        <p><input type="submit" id="yorum_ekle" value="Yorum Ekle"></p>
         </form>
+    </div>
+    <div id="yorumeklendi">
+    <p>Yorumunuz onaylandıktan sonra yayınlanacaktır.</p>
+    </div>
     {% endif %}
 {% endif %}
         {% if ilan.user == user %}
@@ -78,6 +83,10 @@
     </div>
 </div>
 <script>
+$("#yorum_ekle").click(function(e) {
+    $('#yorum_formu').fadeOut(2000);
+    $('#yorumeklendi').fadeIn(100);}
+
 $("#likes").click(function(e) {
     e.preventDefault();
     

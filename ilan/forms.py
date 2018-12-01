@@ -11,6 +11,12 @@ class IlanForm(forms.ModelForm):
         model = Ilan
         fields = ['baslik', 'metin', 'ilan_foto']
 
+class IlanAdminForm(forms.ModelForm):
+    metin = forms.CharField(widget=CKEditorUploadingWidget())
+    class Meta:
+        model = Ilan
+        fields = ['baslik', 'metin', 'ilan_foto']
+
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment

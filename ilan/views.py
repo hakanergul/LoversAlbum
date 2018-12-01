@@ -94,6 +94,7 @@ def ilan_detail(request, pk):
     'begeni_kalp': begeni_kalp,
     })
 
+@login_required
 def mutluluk_dile(request, pk):
     ilan = Ilan.objects.get(id=pk)
     begeni = 'btn-success'
@@ -115,3 +116,21 @@ def mutluluk_dile(request, pk):
     'begeni_kalp': begeni_kalp
     }
     return JsonResponse(data)
+
+''' @login_required
+def yorum_ekle(request, pk):
+    ilan = Ilan.objects.get(id=pk)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        form.save()
+       
+        if form.is_valid(): 
+            print(form)
+            yeni_yorum = form.save(commit = False)
+            yeni_yorum.user = request.user
+            yeni_yorum.save()
+            ##ilan.yorumlar.create(user = request.user, yorum_metni = form.fields['yorum_metni'])
+        else:
+            yeni_yorum = ilan.yorumlar.create(user = request.user, yorum_metni = "lalalalala")
+    data = {'yorum': yeni_yorum.yorum_metni }
+    return JsonResponse(data) '''

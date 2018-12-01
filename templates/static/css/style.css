@@ -544,6 +544,9 @@ footer a:hover {
   padding: 0;
 }
 
+#yorumeklendi {
+  display: none;
+}
 /*********** END ILAN GOSTER **********/
 
 .scrollable {
