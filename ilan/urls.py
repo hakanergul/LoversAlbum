@@ -14,4 +14,4 @@ urlpatterns = [
     path('<int:pk>/edit', views.IlanUpdateView.as_view(), name='ilan_update'),
     path('<int:pk>/delete', views.IlanDeleteView.as_view(), name='ilan_delete'),
     path('<int:pk>/mutlulukdile', views.mutluluk_dile, name='mutluluk_dile'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

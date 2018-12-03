@@ -24,18 +24,18 @@
 <h3>Yorumlarım</h3>
 
 {% for yorumum in yorumlarim %}
-   <div class="yorum-liste"> {{ yorumum.ilan.user.first_name }} {{ yorumum.ilan.user.last_name }} {{ yorumum.ilan.baslik }} - <em>{{ yorumum.created }}</em>
-    {{ yorumum.yorum_metni }} 
+   <div class="yorum-liste"> <a href =" ../ilan/{{ yorumum.ilan.id }} "> {{ yorumum.ilan.baslik }}</a> - <span class="tarih">{{ yorumum.created }}</span>
+    {{ yorumum.yorum_metni | truncatewords:5 }} 
     </div>
 {% endfor %}
 {% endif %}
 
 
-{% if user.ilan.yorumlar %}
+{% if ilanima_yorumlar %}
 <h3>İlanıma Yapılan Yorumlar</h3>
 {% for yapilan_yorum in ilanima_yorumlar %}
-       <div class="yorum-liste"> {{ yapilan_yorum.user.first_name }} {{ yapilan_yorum.user.last_name }}  - <em>{{ yapilan_yorum.created }}</em>
-    {{ yapilan_yorum.yorum_metni }} 
+       <div class="yorum-liste"> {{ yapilan_yorum.user }}  - <span class="tarih">{{ yapilan_yorum.created }}</span>
+    {{ yapilan_yorum.yorum_metni|truncatewords:5 }} 
     </div>
 {% endfor %}
 {% endif %}
