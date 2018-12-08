@@ -15,7 +15,7 @@
     <p>Lütfen önce giriş yapın</p>
 {% endif %}
 </div>
-<form method="post" action="{% url 'login' %}">
+<form method="post" action="{% url 'login' %}" class="giris-formu">
 {% csrf_token %}
     <div>{{ form.username.label_tag }}</div>
     <div>{{ form.username }}</div>
