@@ -400,7 +400,8 @@ footer a:hover {
   display: none;
 }
 .login {
-  margin: 20px;
+  margin: 20px auto;
+  width: 333px;
 }
 
 .login-button {
@@ -408,6 +409,7 @@ footer a:hover {
 }
 
 .giris-formu {
+  width: 300px;
   max-width: 500px;
   margin: 10px auto;
 }
@@ -428,30 +430,28 @@ footer a:hover {
 }
 
 .login label {
-  clear: left;
-  float: left;
-  width: 40%;
-  text-align: right;
+  display: block;
+  text-align: center;
   font-weight: 200;
+  font-size: 0.9em;
 }
 
-.login label:after {
+/* .login label:after {
   content: "";
   line-height: 30px;
-}
+} */
 
 .login input[type="text"],
 .login input[type="password"],
 .login input[type="email"] {
-  margin-top: 0;
+  margin: 0 auto;
+  margin-top: -2px;
   margin-bottom: 6px;
-  margin-left: 4px;
-  min-width: 200px;
-  max-width: 250px;
-  width: 30%;
+  padding-left: 7px;
+  min-width: 250px;
   line-height: 30px;
   border-radius: 10px;
-  float: left;
+  display: block;
 }
 
 .login p:last-child {
