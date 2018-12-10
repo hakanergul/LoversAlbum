@@ -396,6 +396,22 @@ footer a:hover {
 
 /********* LOGIN/REGISTRATION FORM *************/
 
+.helptext {
+  display: none;
+}
+.login {
+  margin: 20px;
+}
+
+.login-button {
+  margin: 0 auto;
+}
+
+.giris-formu {
+  max-width: 500px;
+  margin: 10px auto;
+}
+
 .login-name-btn {
   color: #fff;
   background-color: rgba(255, 0, 0, 0.1);
@@ -407,46 +423,39 @@ footer a:hover {
   background-color: rgba(255, 0, 0, 0.349);
 }
 
-.login {
-  height: 60vh;
-  padding: 10px;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.login input {
+  border: solid 1px rgba(0, 0, 0, 0.5);
 }
 
 .login label {
-  margin-top: 8px;
-  margin-bottom: 4px;
-  color: rgb(34, 41, 5);
+  clear: left;
+  float: left;
+  width: 40%;
+  text-align: right;
+  font-weight: 200;
+}
+
+.login label:after {
+  content: "";
+  line-height: 30px;
 }
 
 .login input[type="text"],
+.login input[type="password"],
 .login input[type="email"] {
-  width: 250px;
-  height: 30px;
-  background: transparent;
-  border: 1px solid rgba(29, 144, 0, 0.431);
-  border-radius: 2px;
-  color: rgb(11, 32, 5);
-  font-family: "Exo", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  padding: 4px;
+  margin-top: 0;
+  margin-bottom: 6px;
+  margin-left: 4px;
+  min-width: 200px;
+  max-width: 250px;
+  width: 30%;
+  line-height: 30px;
+  border-radius: 10px;
+  float: left;
 }
 
-.login input[type="password"] {
-  width: 250px;
-  height: 30px;
-  background: transparent;
-  border: 1px solid rgba(29, 144, 0, 0.431);
-  border-radius: 2px;
-  color: rgb(11, 32, 5);
-  font-family: "Exo", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  padding: 4px;
+.login p:last-child {
+  margin: 0 auto;
 }
 
 .login input[type="submit"] {
@@ -456,12 +465,13 @@ footer a:hover {
   border: 1px solid #fff;
   cursor: pointer;
   border-radius: 2px;
-  color: #a18d6c;
+  color: #fff;
   font-family: "Exo", sans-serif;
   font-size: 16px;
   font-weight: 400;
   padding: 6px;
   margin-top: 10px;
+  clear: both;
 }
 
 .login input[type="submit"]:hover {
