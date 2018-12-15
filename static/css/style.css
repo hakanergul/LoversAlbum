@@ -569,12 +569,6 @@ audio {
   padding: 11px;
   height: 20px;
 }
-audio:before {
-  content: "";
-  width: 30px;
-  background: rgb(61, 3, 1);
-  z-index: 2;
-}
 
 .ilan-metni {
   margin: 10px auto;
