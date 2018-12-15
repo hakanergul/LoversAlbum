@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block content %}
 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-sm-12 col-xs-12">
-        
+<audio controls="" autoplay>
+    <source src="/media/{{ilan.ilan_fon_muzik}}" type="audio/mpeg"/>
+</audio>
 <div class="ilan-metni">{{ ilan.metin | safe}}</div>
 <div class="ilan-alti">
 

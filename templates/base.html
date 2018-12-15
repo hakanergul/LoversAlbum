@@ -82,7 +82,7 @@
         </div>
     </header>
 {% else %}
-<section class="main-section">
+<section class="main-section" {% if request.path == '/user/login/' %}style="background-image:url('{% static "/images/loginbg.jpg" %}');background-position: center center;background-size: cover;background-repeat: no-repeat;height: 100vh;"{% endif %}>
     <div class="row">
         {% block content %}
 

@@ -9,7 +9,7 @@ class IlanForm(forms.ModelForm):
     metin = forms.CharField(widget=CKEditorUploadingWidget())
     class Meta:
         model = Ilan
-        fields = ['baslik', 'metin', 'ilan_foto']
+        fields = ['baslik', 'metin', 'ilan_foto', 'ilan_fon_muzik']
 
 class CommentForm(forms.ModelForm):
     class Meta:

@@ -146,10 +146,10 @@ nav.navbar-default .navbar-nav li a.active:hover {
 /**** HEADER ****/
 
 header {
-  min-height: 100%;
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
+  height: 100vh;
 }
 
 header:after {
@@ -159,7 +159,7 @@ header:after {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(44, 61, 1, 0.205);
   z-index: 0;
 }
 
@@ -169,7 +169,7 @@ header .header-content {
   text-align: center;
 }
 
-header .header-content {
+/* header .header-content {
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -177,7 +177,7 @@ header .header-content {
   padding: 0 50px;
   z-index: 10;
 }
-
+ */
 header .header-content .header-content-inner {
   position: relative;
   top: 20px;
@@ -399,9 +399,13 @@ footer a:hover {
 .helptext {
   display: none;
 }
+
 .login {
   margin: 20px auto;
+  background: rgba(255, 255, 255, 0.678);
   width: 333px;
+  border-radius: 10px;
+  font-family: "Montserrat", sans-serif;
 }
 
 .login-button {
@@ -426,14 +430,16 @@ footer a:hover {
 }
 
 .login input {
-  border: solid 1px rgba(0, 0, 0, 0.5);
+  border: solid 1px rgba(75, 114, 3, 0.313);
 }
 
 .login label {
   display: block;
   text-align: center;
-  font-weight: 200;
-  font-size: 0.9em;
+  font-weight: 300;
+  margin-top: 10px;
+  color: rgb(202, 96, 96);
+  font-size: 1.01em;
 }
 
 /* .login label:after {
@@ -441,37 +447,57 @@ footer a:hover {
   line-height: 30px;
 } */
 
+form input,
 .login input[type="text"],
 .login input[type="password"],
 .login input[type="email"] {
   margin: 0 auto;
   margin-top: -2px;
   margin-bottom: 6px;
-  font-family: Raleway, sans-serif;
+  font-family: "Raleway", sans-serif;
   padding-left: 9px;
-  min-width: 300px;
+  min-width: 280px;
   line-height: 35px;
   border-radius: 10px;
+  box-shadow: inset 0 3px 6px 0 hsla(0, 0%, 0%, 0.08);
   display: block;
+}
+
+.login > div > p {
+  color: rgba(68, 28, 24, 0.815);
 }
 
 .login p:last-child {
   margin: 0 auto;
+  color: rgba(255, 0, 0, 0.418);
+  font-weight: 700;
+  font-size: 1.3em;
+}
+
+.login a {
+  color: rgb(141, 103, 103);
+  font-weight: 400;
+}
+
+.login a:last-child {
+  color: rgb(164, 182, 4);
+  font-weight: 700;
 }
 
 .login input[type="submit"] {
   width: 200px;
   height: 35px;
-  background: rgb(51, 143, 23);
+  background: rgb(164, 182, 4);
   border: 1px solid #fff;
   cursor: pointer;
-  border-radius: 2px;
+  border-radius: 10px;
   color: #fff;
   font-family: "Exo", sans-serif;
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 500;
+  letter-spacing: 2px;
   padding: 6px;
-  margin-top: 10px;
+  margin: 20px auto;
   clear: both;
 }
 
@@ -505,6 +531,13 @@ footer a:hover {
   color: rgba(255, 255, 255, 0.6);
 }
 
+.errorlist {
+  list-style-type: none;
+  margin-top: -5px;
+  font-size: 0.7em;
+  color: red;
+}
+
 /******** END LOGIN FORM **********/
 
 /******** ILAN EKLEME *************/
@@ -528,8 +561,25 @@ footer a:hover {
 
 /********** STRT ILAN GOSTER **********/
 
+audio {
+  display: block;
+  margin: 0 auto;
+  color: blue;
+  background-color: #55d684;
+  padding: 11px;
+  height: 20px;
+}
+audio:before {
+  content: "";
+  width: 30px;
+  background: rgb(61, 3, 1);
+  z-index: 2;
+}
+
 .ilan-metni {
-  margin: 20px auto;
+  margin: 10px auto;
+  min-height: 100vh;
+  height: 100vh;
 }
 
 .ilan-alti {
