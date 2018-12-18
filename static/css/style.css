@@ -3,7 +3,7 @@
 body {
   background: #fff;
   color: #414141;
-  font-family: "Roboto", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 16px;
   overflow-x: hidden;
   -webkit-text-stroke: rgba(255, 255, 255, 0.01) 0.1px;
@@ -135,10 +135,14 @@ nav.navbar-default .navbar-nav li a.active:hover {
   font-size: 0.8em;
 }
 
+.dropdown-item {
+  color: #fff !important;
+}
+
 .dropdown-menu {
   margin-top: -8px;
   min-width: 140px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(192, 180, 4, 0.938);
 }
 
 /**** NAV END ****/
@@ -230,7 +234,6 @@ h4 {
 .card-header a {
   color: rgba(235, 164, 95, 0.6);
 }
-
 /**** HEADER END ****/
 
 /**** Nasil Calisir ****/
@@ -319,12 +322,12 @@ section {
 
 .kull-liste {
   display: inline-block;
-  color: rgba(69, 77, 4, 0.993);
-  font-size: 0.88em;
+  color: rgba(214, 168, 146, 0.945);
+  font-size: 0.85em;
   font-style: italic;
-  background-color: #8ce0058a;
-  padding: 1px 3px;
-  border-radius: 10%;
+  background-color: rgba(214, 168, 146, 0.1145);
+  padding: 2px 4px;
+  border-radius: 6px 0;
 }
 /**** NASİL CALİSİR END ****/
 
@@ -540,34 +543,40 @@ form input,
 
 /******** END LOGIN FORM **********/
 
-/******** ILAN EKLEME *************/
+/******** YORUM *************/
 
-#editor {
-  margin-top: 50px;
+.comment {
+  margin: 10px auto;
+  width: 300px;
+  color: rgb(116, 122, 116);
 }
 
-.yorum-liste {
+.info {
+  font-size: 0.8em;
+  color: #817e7e;
+  font-weight: 600;
+}
+
+.yorum-form {
   border: solid 1px #22d2e2;
   border-radius: 5px;
   width: 400px;
   margin: 20px auto;
 }
 
-.yorum-liste .tarih {
-  font-size: 0.6em;
-  color: rgb(167, 138, 138);
+#yorum-ekle {
+  border: solid 1px rgb(116, 122, 116);
+  border-radius: 5px;
 }
-/******** END ILAN EKLEME  ********/
+
+/******** END YORUM  ********/
 
 /********** STRT ILAN GOSTER **********/
 
 audio {
   display: block;
   margin: 0 auto;
-  color: blue;
-  background-color: #55d684;
   padding: 11px;
-  height: 20px;
 }
 
 .ilan-metni {
@@ -578,7 +587,6 @@ audio {
 
 .ilan-alti {
   margin: 80px auto;
-  float: left;
 }
 
 .ilan-begeni-paylasim {

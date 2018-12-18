@@ -3,11 +3,49 @@
 
 {% block content %}
 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-sm-12 col-xs-12">
-<audio controls="" autoplay>
-    <source src="/media/{{ilan.ilan_fon_muzik}}" type="audio/mpeg"/>
-</audio>
-<div class="ilan-metni">{{ ilan.metin | safe}}</div>
-<div class="ilan-alti">
+    <h1 class="center">{{ ilan.baslik }}</h1>
+    {% if ilan.ilan_fon_muzik %}
+    <audio controls="" autoplay>
+        <source src="/media/{{ilan.ilan_fon_muzik}}" type="audio/mpeg"/>
+    </audio>
+    {% endif %}
+
+    <div class="ilan-metni">{{ ilan.metin | safe}}</div>
+    
+    <div class="ilan-alti">
+        {% if new_comment %}
+        <p>Yorumunuz onaylandıktan sonra yayınlanacaktır.</p>
+        {% else %}
+            {% if  user.is_authenticated %}
+            <div id="yorum_form">
+                <form action="" method="POST">
+                {{ comment_form.as_p }}
+                {% csrf_token %}
+                <p><input type="submit" id="yorum_ekle" value="Yorum Ekle"></p>
+                </form>
+            </div>
+            {% endif %}
+        {% endif %}
+        {% if ilan.user == user %}
+            <p><a href="{{ ilan.id }}/edit">Düzenle</a> | <a href="{{ ilan.id }}/delete">İlanı Sil</a><p>       
+        {% endif %}
+        {% for comment in yorumlar %}
+            <div class="comment">
+                <p class="info">
+                {{ comment.user }} - {{ comment.created }}
+                </p>
+                {{ comment.yorum_metni|linebreaks }}
+            </div>
+            {% empty %}
+            <div class="card">
+                <div class="card-body">
+                    <em>Henüz yorum yapılmadı.</em>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
 
 <div class="ilan-begeni-paylasim">
     {% if user.is_authenticated %}
@@ -22,69 +60,8 @@
     <a href="https://twitter.com/intent/tweet?url={{ request.META.HTTP_HOST }}/ilan/{{ ilan.id }}"><i class="fab fa-instagram fa-2x"></i></a>
     <a href="whatsapp://send?text={{ request.META.HTTP_HOST }}/ilan/{{ ilan.id }}" data-action="share/whatsapp/share"><i class="fab fa-whatsapp-square fa-2x"></i></a>
 </div>
-        
 
-{% if new_comment %}
-<p>Yorumunuz onaylandıktan sonra yayınlanacaktır.</p>
-{% else %}
-    {% if  user.is_authenticated %}
-    <div id="yorum_form">
-        <form action="" method="POST">
-        {{ comment_form.as_p }}
-        {% csrf_token %}
-        <p><input type="submit" id="yorum_ekle" value="Yorum Ekle"></p>
-        </form>
-    </div>
-    <div id="yorumeklendi">
-    <p>Yorumunuz onaylandıktan sonra yayınlanacaktır.</p>
-    </div>
-    {% endif %}
-{% endif %}
-        {% if ilan.user == user %}
-                <p><a href="{{ ilan.id }}/edit">Düzenle</a> | <a href="{{ ilan.id }}/delete">İlanı Sil</a><p>
 
-                    {% with yorumlar.count as total_comments %}
-                    <h4>
-                    {{ total_comments }} yorum
-                    </h4>
-                    {% endwith %}        
-        {% endif %}
-        {% for comment in yorumlar %}
-        <div class="comment">
-            <p class="info">
-            Comment {{ forloop.counter }} by {{ comment.user }}
-            {{ comment.created }}
-            </p>
-            {{ comment.yorum_metni|linebreaks }}
-            </div>
-            {% empty %}
-            <div class="card">
-            <div class="card-body">
-                Henüz yorum yapılmadı.
-            </div>
-            </div>
-        {% endfor %}
-        <div class="social-icons">
-                <ul class="list-unstyled list-inline text-center mb-0">
-                    <li class="list-unstyled-item">
-                    <a href="#">
-                        <i class="fab fa-twitter fa-2x"></i>
-                    </a>
-                    </li>
-                    <li class="list-unstyled-item">
-                    <a href="#">
-                        <i class="fab fa-facebook-f fa-2x"></i>
-                    </a>
-                    </li>
-                    <li class="list-unstyled-item">
-                    <a href="#">
-                        <i class="fab fa-instagram fa-2x"></i>
-                    </a>
-                    </li>
-                </ul>
-        </div>
-    </div>
-</div>
 <script>
 $("#yorum_ekle").click(function(e) {
     $('#yorum_formu').fadeOut(2000);

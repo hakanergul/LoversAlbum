@@ -20,41 +20,42 @@
 </h4>
 {% endif %}
 
-{% if yorumlarim %}
-<h3>Yorumlarım</h3>
+    <div id="">
+    {% if yorumlarim %}
+    <h3>Yorumlarım</h3>
 
-{% for yorumum in yorumlarim %}
-   <div class="yorum-liste"> <a href =" ../ilan/{{ yorumum.ilan.id }} "> {{ yorumum.ilan.baslik }}</a> - <span class="tarih">{{ yorumum.created }}</span>
-    {{ yorumum.yorum_metni | truncatewords:5 }} 
+    {% for yorumum in yorumlarim %}
+    <div class="yorum-liste"> <a href =" ../ilan/{{ yorumum.ilan.id }} "> {{ yorumum.ilan.baslik }}</a> - <span class="tarih">{{ yorumum.created }}</span>
+        {{ yorumum.yorum_metni | truncatewords:5 }} 
+        </div>
+    {% endfor %}
+    {% endif %}
+
+
+    {% if ilanima_yorumlar %}
+    <h3>İlanıma Yapılan Yorumlar</h3>
+    {% for yapilan_yorum in ilanima_yorumlar %}
+        <div class="yorum-liste"> {{ yapilan_yorum.user }}  - <span class="tarih">{{ yapilan_yorum.created }}</span>
+        {{ yapilan_yorum.yorum_metni|truncatewords:5 }} 
+        </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if mutluluk_dilediklerim  %}
+    <h3>Mutluluk Dilediklerim</h3>
+    {% for item in mutluluk_dilediklerim  %}
+        <a href="../ilan/{{ item.user.ilan.id }}"><span class="kull-liste"> {{ item.user }}</span></a>
+    {% endfor %}
+    {% endif %}
+
+
+    {% if mutluluk_dileyenler  %}
+    <h3>Mutluluk Dileyenler</h3>
+
+    {% for item in mutluluk_dileyenler  %}
+        <span class="kull-liste"> {{ item.user }}</span>
+    {% endfor %}
+    {% endif %}
     </div>
-{% endfor %}
-{% endif %}
-
-
-{% if ilanima_yorumlar %}
-<h3>İlanıma Yapılan Yorumlar</h3>
-{% for yapilan_yorum in ilanima_yorumlar %}
-       <div class="yorum-liste"> {{ yapilan_yorum.user }}  - <span class="tarih">{{ yapilan_yorum.created }}</span>
-    {{ yapilan_yorum.yorum_metni|truncatewords:5 }} 
-    </div>
-{% endfor %}
-{% endif %}
-
-{% if mutluluk_dilediklerim  %}
-<h3>Mutluluk Dilediklerim</h3>
-{% for item in mutluluk_dilediklerim  %}
-       <span class="kull-liste"> {{ item.user }}</span>
-{% endfor %}
-{% endif %}
-
-
-{% if mutluluk_dileyenler  %}
-<h3>Mutluluk Dileyenler</h3>
-
-{% for item in mutluluk_dileyenler  %}
-       <span class="kull-liste"> {{ item.user }}</span>
-{% endfor %}
-{% endif %}
-
 </div>
 {% endblock %}
