@@ -2,7 +2,7 @@
 
 body {
   background: #fff;
-  color: #414141;
+  color: #796565;
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
   overflow-x: hidden;
@@ -15,6 +15,7 @@ a {
   -ms-transition: all 0.3s ease-in;
   -webkit-transition: all 0.3s ease-in;
   transition: all 0.3s ease-in;
+  color: rgba(255, 0, 0, 0.472);
 }
 
 a:hover,
@@ -60,6 +61,13 @@ p {
   margin: 0;
 }
 
+h1,
+h2,
+h3,
+h4 {
+  color: rgba(255, 0, 0, 0.349);
+}
+
 input,
 textarea {
   -webkit-appearance: none;
@@ -74,8 +82,8 @@ body {
 /**** NAV ****/
 
 nav.navbar-default {
-  background-color: rgba(192, 180, 4, 0.938);
-  border-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(192, 26, 4, 0.87);
+  border-color: rgba(78, 75, 75, 0.05);
   -ms-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
@@ -90,7 +98,7 @@ nav.navbar-default.affix {
 
 nav.navbar-default .navbar-brand {
   color: #fff;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 32px;
   font-family: "Sacramento", sans-serif;
 }
@@ -107,8 +115,8 @@ nav.navbar-default .navbar-nav > li {
 
 nav.navbar-default .navbar-nav > li > a {
   color: #fff;
-  font-family: "Dosis", sans-serif;
-  font-size: 0.88em;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.78em;
   letter-spacing: 0.06em;
 }
 
@@ -123,6 +131,14 @@ nav.navbar-default .navbar-nav li a.active:focus,
 nav.navbar-default .navbar-nav li a.active:hover {
   color: #f05f40;
   background-color: transparent;
+}
+
+.nav-item .btn-default-new {
+  max-width: 100px;
+}
+
+.nav li {
+  text-align: center;
 }
 
 .nav > li > a {
@@ -153,7 +169,14 @@ header {
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
+  min-height: 650px;
+  position: relative;
+}
+
+@media only screen and (max-width: 400px) {
+  header {
+    min-height: 100vh;
+  }
 }
 
 header:after {
@@ -163,7 +186,7 @@ header:after {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(44, 61, 1, 0.205);
+  background: rgba(46, 35, 38, 0.452);
   z-index: 0;
 }
 
@@ -173,53 +196,90 @@ header .header-content {
   text-align: center;
 }
 
-/* header .header-content {
+header .header-content {
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
-  padding: 0 50px;
+  padding: 0 10px;
+  margin-top: -20px;
   z-index: 10;
 }
- */
-header .header-content .header-content-inner {
-  position: relative;
-  top: 20px;
+
+.header-content .row {
   width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
-  text-shadow: 2px 3px 6px rgba(0, 0, 0, 0.41);
+  margin: 0;
 }
 
-h1,
-h2,
-h3,
-h4 {
-  font-family: "Montserrat", sans-serif;
-  color: rgba(255, 0, 0, 0.349);
+.anasayfa-slogan {
+  width: 100%;
+  color: rgb(216, 190, 190);
+  font-family: "Dosis", sans-serif;
+  margin-top: 111px;
+  text-shadow: 1px 1px rgba(214, 167, 146, 0.26);
 }
 
-.header-content-inner h1 {
-  font-size: 58px;
-  margin-bottom: 30px;
-  font-family: "Sacramento";
-  color: #fff;
-  letter-spacing: 0.05em;
+.anasayfa-slogan h3 {
+  margin-bottom: 20px;
+  color: rgb(233, 204, 211);
+  font-size: 30px;
+  font-weight: 400;
 }
 
-.header-content-inner h1:after {
-  content: "";
-  display: block;
-  width: 80px;
-  height: 3px;
-  margin: 20px auto 0;
-  background: #f05f40;
+.anasayfa-slogan p {
+  text-align: center;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.anasayfa-slogan .fa,
+.anasayfa-slogan .fas {
+  color: rgb(197, 179, 136);
+}
+
+@media only screen and (min-width: 900px) {
+  .anasayfa-slogan {
+    font-family: "Dosis", sans-serif;
+    margin-top: 211px;
+    text-shadow: 1px 1px rgba(214, 167, 146, 0.26);
+  }
+
+  .anasayfa-slogan h3 {
+    margin-bottom: 40px;
+    font-size: 35px;
+    font-weight: 600;
+  }
+
+  .anasayfa-slogan p {
+    text-align: center;
+    font-size: 24px;
+    margin: 20px 0;
+  }
+
+  .anasayfa-slogan .fa,
+  .anasayfa-slogan .fas {
+    width: 140px;
+  }
+
+  #hizli-basla {
+    font-size: 18px;
+    font-weight: 500;
+  }
+}
+
+#hizli-basla {
+  display: inline-block;
+  font-family: "Dosis", sans-serif;
+  border-color: #fff;
+  border-width: 2px;
+  border-radius: 30px;
+  margin-top: 10px;
+  width: 180px;
 }
 
 .header-content-inner p {
   font-size: 22px;
-  font-family: "Montserrat";
-  line-height: 1.8;
+  line-height: 1.8em;
   color: #e4e4e4;
 }
 
@@ -236,16 +296,26 @@ h4 {
 }
 /**** HEADER END ****/
 
+/**** KAROSEL BOLUMU ****/
+
+.karosel {
+  padding: 20px 10px;
+}
+
+.karosel h3 {
+  text-align: center;
+}
+
+.karosel img {
+  height: 200px;
+}
+
+/**** KAROSEL END ****/
+
 /**** Nasil Calisir ****/
 
 .bg-color {
   background: #333f40;
-}
-
-section {
-  padding: 80px 0;
-  position: relative;
-  text-align: center;
 }
 
 .btn-default-new {
@@ -253,7 +323,6 @@ section {
   border-radius: 30px;
   border: solid 2px #c37934;
   color: #ffffff;
-  text-transform: capitalize;
   font-family: "Roboto", sans-serif;
   padding: 0 3px;
   -ms-transition: all 0.6s ease-in-out;
@@ -334,13 +403,11 @@ section {
 /**** MAİN SECTİON anasayfa ****/
 
 .main-section {
-  min-height: 100vh;
-}
-
-.anasayfa-slogan {
-  font-size: 1.2em;
-  color: rgba(112, 11, 11, 0.918);
-  background-color: rgba(0, 0, 0, 0.05);
+  min-height: 450px;
+  overflow: auto;
+  padding: 70px 0;
+  position: relative;
+  text-align: center;
 }
 
 /**** MAİN SECTİON END ****/
@@ -404,7 +471,7 @@ footer a:hover {
 }
 
 .login {
-  margin: 20px auto;
+  margin: 10px auto;
   background: rgba(255, 255, 255, 0.678);
   width: 333px;
   border-radius: 10px;
@@ -413,6 +480,7 @@ footer a:hover {
 
 .login-button {
   margin: 0 auto;
+  margin-bottom: 10px;
 }
 
 .giris-formu {
@@ -421,10 +489,14 @@ footer a:hover {
   margin: 10px auto;
 }
 
+#spacer {
+  color: rgb(171, 184, 171);
+  font-weight: 700;
+}
+
 .login-name-btn {
-  color: #fff;
-  background-color: rgba(255, 0, 0, 0.1);
-  border-color: rgba(0, 0, 0, 0.1);
+  color: #fff !important;
+  background-color: rgba(255, 0, 0, 0.04);
 }
 
 .login-name-btn:hover {
@@ -455,8 +527,7 @@ form input,
 .login input[type="password"],
 .login input[type="email"] {
   margin: 0 auto;
-  margin-top: -2px;
-  margin-bottom: 6px;
+
   font-family: "Raleway", sans-serif;
   padding-left: 9px;
   min-width: 280px;
@@ -557,16 +628,47 @@ form input,
   font-weight: 600;
 }
 
-.yorum-form {
-  border: solid 1px #22d2e2;
-  border-radius: 5px;
-  width: 400px;
+#yorum_form {
+  width: 350px;
   margin: 20px auto;
 }
 
-#yorum-ekle {
-  border: solid 1px rgb(116, 122, 116);
-  border-radius: 5px;
+#yorum_form p {
+  display: block;
+  margin: 2px auto;
+  text-align: center;
+  color: rgba(255, 0, 0, 0.349);
+}
+
+#yorum_form textarea {
+  margin: 0 auto;
+  margin-top: -2px;
+  margin-bottom: 6px;
+  font-family: "Raleway", sans-serif;
+  padding-left: 9px;
+  width: 100%;
+  min-width: 280px;
+  height: 200px;
+  line-height: 35px;
+  border-radius: 10px;
+  border: solid 1px rgba(255, 0, 0, 0.349);
+  display: block;
+}
+
+#yorum_ekle {
+  min-width: 180px !important;
+  height: auto;
+  background: rgb(182, 114, 4);
+  border: 1px solid #fff;
+  cursor: pointer;
+  border-radius: 10px;
+  color: #fff;
+  font-family: "Exo", sans-serif;
+  font-size: 0.9em;
+  font-weight: 500;
+  letter-spacing: 2px;
+  padding: 2px;
+  margin: 10px auto;
 }
 
 /******** END YORUM  ********/
@@ -586,7 +688,20 @@ audio {
 }
 
 .ilan-alti {
-  margin: 80px auto;
+  margin: 20px auto;
+  background-color: rgba(68, 67, 6, 0.5);
+}
+
+.ilan-alti a {
+  color: rgb(195, 182, 161);
+  border: solid 2px rgb(197, 181, 155);
+  padding: 2px 4px;
+  border-radius: 10px;
+  background-color: rgb(182, 114, 4);
+}
+
+.ilan-alti > * {
+  color: #fff;
 }
 
 .ilan-begeni-paylasim {
@@ -598,7 +713,7 @@ audio {
   transition: all 0.15s ease-out 0;
   width: 5rem;
   padding: 1em;
-  background: #f0f0f0;
+  background: rgba(236, 211, 199, 0.06);
   border-radius: 10%;
   font-size: 0.85em;
   color: gray;
@@ -612,121 +727,3 @@ audio {
 }
 
 /*********** END ILAN GOSTER **********/
-
-.scrollable {
-  height: 500px;
-  margin: 0 auto;
-  padding: 0;
-  -webkit-box-shadow: -5px 6px 5px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: -5px 6px 5px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: -5px 6px 5px 0px rgba(0, 0, 0, 0.75);
-  background: rgba(255, 255, 255, 0.5);
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-}
-
-.items {
-  animation: scroll 12s infinite;
-  -webkit-animation: scroll 12s infinite;
-  -moz-animation: scroll 12s infinite;
-  -ms-animation: scroll 12s infinite;
-}
-.item {
-  height: 500px;
-  overflow: hidden;
-}
-
-@keyframes scroll {
-  0% {
-    margin-top: 0;
-  }
-  27.33% {
-    margin-top: 0;
-  }
-  33.33% {
-    margin-top: -500px;
-  }
-  60.66% {
-    margin-top: -500px;
-  }
-  66.66% {
-    margin-top: -1000px;
-  }
-  94.99% {
-    margin-top: -1000px;
-  }
-  100% {
-    margin-top: 0;
-  }
-}
-
-@-webkit-keyframes scroll {
-  0% {
-    margin-top: 0;
-  }
-  27.33% {
-    margin-top: 0;
-  }
-  33.33% {
-    margin-top: -500px;
-  }
-  60.66% {
-    margin-top: -500px;
-  }
-  66.66% {
-    margin-top: -1000px;
-  }
-  94.99% {
-    margin-top: -1000px;
-  }
-  100% {
-    margin-top: 0;
-  }
-}
-@-moz-keyframes scroll {
-  0% {
-    margin-top: 0;
-  }
-  27.33% {
-    margin-top: 0;
-  }
-  33.33% {
-    margin-top: -500px;
-  }
-  60.66% {
-    margin-top: -500px;
-  }
-  66.66% {
-    margin-top: -1000px;
-  }
-  94.99% {
-    margin-top: -1000px;
-  }
-  100% {
-    margin-top: 0;
-  }
-}
-@-ms-keyframes scroll {
-  0% {
-    margin-top: 0;
-  }
-  27.33% {
-    margin-top: 0;
-  }
-  33.33% {
-    margin-top: -500px;
-  }
-  60.66% {
-    margin-top: -500px;
-  }
-  66.66% {
-    margin-top: -1000px;
-  }
-  94.99% {
-    margin-top: -1000px;
-  }
-  100% {
-    margin-top: 0;
-  }
-}

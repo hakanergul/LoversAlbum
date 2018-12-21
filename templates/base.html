@@ -12,14 +12,17 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static '/css/wf-style.css' %}">
-
+    <link rel="stylesheet" href="{% static '/js/assets/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static '/js/assets/owl.theme.default.min.css' %}">    
     <link rel="stylesheet" href="{% static '/css/style.css' %}">
-
+    <script src="{% static '/js/jquery-3.3.1.min.js' %}"></script>
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+     {% if request.path == '/ilan/listele/'%}
+        <script src="{% static '/js/responsive_waterfall.js' %}"></script>
+        {% endif %}
     <script type="text/javascript" src="{% static "/ckeditor/ckeditor-init.js" %}"></script>
     <script type="text/javascript" src="{% static "/ckeditor/ckeditor/ckeditor.js" %}"></script>
 
@@ -36,8 +39,6 @@
                     <li class="nav-item">
                     <a href="{% url 'ilan:ilan_ekle' %}" class="btn-default-new nav-link"><span class="glyphicon glyphicon-plus"></span> İlan Ekle</a>
                     </li>
-                
-                <li class="nav-item"><a href="" class="nav-link">Nasıl Çalışır?</a></li>
                     <li class="nav-item"><a href="{% url 'ilan:ilan_listele' %}"  class="nav-link">Aşk İlanları</a></li>
                     <li class="nav-item"><a href="#iletisim"  class="nav-link">İletişim</a></li>
                     
@@ -67,23 +68,13 @@
             </div>
         </div>
     </nav>
-{% if request.path == '/' %}
-    <header  style="background-image:url('https://images.unsplash.com/photo-1494698068553-a3d17778b986?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bbe61c79170f6b13c3dd356df6310f8c&auto=format&fit=crop&w=1051&q=80');" >
-        <div class="header-content">
-            <div class="header-content-inner">
-                <div class="container">
-                    <div class="row">   
-                    {% block main %}
+{% if request.path == '/' %}  
+                {% block main %}
 
-                    {% endblock main %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+                {% endblock main %}
 {% else %}
-<section class="main-section" {% if request.path == '/user/login/' %}style="background-image:url('{% static "/images/loginbg.jpg" %}');background-position: center center;background-size: cover;background-repeat: no-repeat;height: 100vh;"{% endif %}>
-    <div class="row">
+<section class="main-section" {% if request.path == '/user/login/' or request.path == '/register/'  %}style="background-image:url('{% static "/images/loginbg.jpg" %}');background-position: center center;background-size: cover;background-repeat: no-repeat;min-height: 100vh;"{% endif %}>
+    <div class="row" style="margin:0">
         {% block content %}
 
         {% endblock content %}
@@ -105,12 +96,12 @@
         </div>
     </footer>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="{% static '/js/jquery-3.3.1.min.js' %}"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="{% static '/js/owl.carousel.min.js' %}"></script>
+        <script src="{% static '/js/jscolor.js' %}"></script>
 
-        <script src="{% static '/js/responsive_waterfall.js' %}"></script>
         <script src="{% static '/js/script.js' %}"></script>
-
+        
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

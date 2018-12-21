@@ -1,56 +1,58 @@
 {% extends 'base.html' %}
 
 {% block main %}
-<div class="col-lg-7 col-md-8 col-sm-12 col-xs-12">
-        <div class="anasayfa-slogan col-lg-10">
-            <h3>Aşkınızı tarihe yazmak ister misiniz?</h3>
-            <ul class="list-unstyled text-center mt-20 mb-0">
-                    <li class="list-unstyled-item">
-                        <i class="fab fa-twitter fa-2x"></i> Sevdiğiniz bir kişiye sürpriz  yapmak istiyorsunuz
-                    </li>
-                    <li class="list-unstyled-item">
-                        <i class="fab fa-twitter fa-2x"></i> Sevdiğiniz bir kişiye sürpriz  yapmak istiyorsunuz
-                    </li>
-                    <li class="list-unstyled-item">
-                        <i class="fab fa-twitter fa-2x"></i> Sevdiğiniz bir kişiye sürpriz  yapmak istiyorsunuz
-                    </li>
-                    <li class="list-unstyled-item">
-                        <i class="fab fa-twitter fa-2x"></i> Sevdiğiniz bir kişiye sürpriz  yapmak istiyorsunuz
-                    </li>
-                </ul>
-        </div>
-        <div class="social-icons">
-                <ul class="list-unstyled list-inline text-center mt-20 mb-0">
-                    <li class="list-unstyled-item">
-                    <a href="#">
-                        <i class="fab fa-twitter fa-4x"></i>
-                    </a>
-                    </li>
-                    <li class="list-unstyled-item">
-                    <a href="#">
-                        <i class="fab fa-facebook-f fa-4x"></i>
-                    </a>
-                    </li>
-                    <li class="list-unstyled-item">
-                    <a href="#">
-                        <i class="fab fa-instagram fa-4x"></i>
-                    </a>
-                    </li>
-                </ul>
-        </div>
-</div>
+<header  style="background-image:url('https://images.unsplash.com/photo-1494698068553-a3d17778b986?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bbe61c79170f6b13c3dd356df6310f8c&auto=format&fit=crop&w=1051&q=80');" >
+        <div class="header-content">
+            <div class="row"> 
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="anasayfa-slogan col-lg-10">
+                        <h3>Aşkınızı tarihe yazın!</h3>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div class="row"><i class="fa fa-gift fa-3x" aria-hidden="true"></i></div> 
+                                <p>Sevdiğiniz bir kişiye sürpriz  yapmak istiyorsunuz</p>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div class="row"><i class="fas fa-images fa-3x"></i></div>
+                                <p>Anılarınız ve fotoğraflarınızı basitçe yükleyin</p>
 
-<div class="scrollable col-lg-4 col-md-4 col-sm-12 col-xs-12">
-    <div class="items">
-    {% for ilan in ilanlar %}
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div class="row"><i class="fas fa-share-square fa-3x"></i></div>
+                                <p>Herkesle paylaşın!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p><a href="/user/login/" class="btn btn-danger" id="hizli-basla">Hızlıca bir ilan oluştur</a></p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="karosel">
+    <h3>Yayınlanan Son İlanlar</h3>
+            <div class="owl-carousel">
+                {% for ilan in ilanlar %}
+                    <div>
+                        <img src="{{ilan.ilan_foto.url}}">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5><a href='../ilan/{{ ilan.id }}'>{{ ilan.baslik }} </a></h5>
+                            <p><span><em>{{ ilan.user }}</em> ~{{ ilan.olusturma_tarihi|timesince }}
+                    <i id="kalp" class="far fa-heart"></i></button> <span id="mutluluk_sayac">{% if ilan.mutluluk_dileyenler.count %}{{ ilan.mutluluk_dileyenler.count }}{% else %}0{% endif %}</span> </p>
+                        </div>
+                    </div>
+                {% endfor%}
+            </div> 
+    </section>
+
+   {% comment %}  {% for ilan in ilanlar %}
         <div class="item"> <a href='../ilan/{{ ilan.id }}'>{{ ilan.baslik }} </a> <img src="{{ilan.ilan_foto.url}}"> 
         <p><span><em>{{ ilan.user }}</em> ~{{ ilan.olusturma_tarihi|timesince }}
     <i id="kalp" class="far fa-heart"></i></button> <span id="mutluluk_sayac">{% if ilan.mutluluk_dileyenler.count %}{{ ilan.mutluluk_dileyenler.count }}{% else %}0{% endif %}</span>     
       </p></div>
-    {% endfor%}
+    {% endfor%} {% endcomment %}
     
-    </div>
-</div>
+
 
 {% endblock %}
 

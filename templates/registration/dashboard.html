@@ -4,58 +4,57 @@
 {% block title %}Kullanıcı Paneli{% endblock %}
 {% block content %}
 
-<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
-
 <h1>Kullanıcı Paneli</h1>
 <p>Kullanıcı panelinize hoşgeldiniz.</p>
 <p>Merhaba {{ user.first_name }}, kullanıcı bilgilerini <a href="{% url 'edit' %}">düzenleyebilirsin</a></p>
 
-{% if ilanim == '' %}
+{% if user.ilan == '' %}
 
 İlanın henüz yok, istiyorsan <a href="../ilan/ekle">ekle</a>
 
 {% else %}
-<h4>
 <a href="../ilan/{{ user.ilan.id}}/edit">{{ user.ilan.baslik }}</a>{% if not user.ilan.yayinlandimi %}<em>editör onayı bekleniyor</em>{% endif %}
-</h4>
+ başlıklı ilanınızı düzenleyebilirsiniz.
 {% endif %}
 
-    <div id="">
-    {% if yorumlarim %}
-    <h3>Yorumlarım</h3>
+    <div class="row">
 
-    {% for yorumum in yorumlarim %}
-    <div class="yorum-liste"> <a href =" ../ilan/{{ yorumum.ilan.id }} "> {{ yorumum.ilan.baslik }}</a> - <span class="tarih">{{ yorumum.created }}</span>
-        {{ yorumum.yorum_metni | truncatewords:5 }} 
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+            <h3>Yorumlarım</h3>
+            {% if not yorumlarim %} <em>Henüz yorum yapmadınız</em>{% endif %}
+            {% for yorumum in yorumlarim %}
+            <div class="yorum-liste"> <a href =" ../ilan/{{ yorumum.ilan.id }} "> {{ yorumum.ilan.baslik }}</a> - <span class="tarih">{{ yorumum.created }}</span>
+                {{ yorumum.yorum_metni | truncatewords:5 }} 
+            </div>
+            {% endfor %}
         </div>
-    {% endfor %}
-    {% endif %}
 
-
-    {% if ilanima_yorumlar %}
-    <h3>İlanıma Yapılan Yorumlar</h3>
-    {% for yapilan_yorum in ilanima_yorumlar %}
-        <div class="yorum-liste"> {{ yapilan_yorum.user }}  - <span class="tarih">{{ yapilan_yorum.created }}</span>
-        {{ yapilan_yorum.yorum_metni|truncatewords:5 }} 
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+            <h3>İlanıma Yapılan Yorumlar</h3>
+            {% if not ilanima_yorumlar %} <em>İlanınıza yorum yazılmadı</em>{% endif %}
+            {% for yapilan_yorum in ilanima_yorumlar %}
+                <div class="yorum-liste">
+                {{ yapilan_yorum.user }}  - <span class="tarih">{{ yapilan_yorum.created }}</span>
+                {{ yapilan_yorum.yorum_metni|truncatewords:5 }} 
+                </div>
+            {% endfor %}
         </div>
-    {% endfor %}
-    {% endif %}
 
-    {% if mutluluk_dilediklerim  %}
-    <h3>Mutluluk Dilediklerim</h3>
-    {% for item in mutluluk_dilediklerim  %}
-        <a href="../ilan/{{ item.user.ilan.id }}"><span class="kull-liste"> {{ item.user }}</span></a>
-    {% endfor %}
-    {% endif %}
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+            <h3>Mutluluk Dilediklerim</h3>
+            {% if not mutluluk_dilediklerim %} <em>Diğer ilanlara göz atıp mutluluk dilemeyi deneyebilirsiniz :) </em>{% endif %}
+            {% for item in mutluluk_dilediklerim  %}
+                <a href="../ilan/{{ item.user.ilan.id }}"><span class="kull-liste"> {{ item.user }}</span></a>
+            {% endfor %}
+        </div>
 
-
-    {% if mutluluk_dileyenler  %}
-    <h3>Mutluluk Dileyenler</h3>
-
-    {% for item in mutluluk_dileyenler  %}
-        <span class="kull-liste"> {{ item.user }}</span>
-    {% endfor %}
-    {% endif %}
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+            <h3>Mutluluk Dileyenler</h3>
+            {% if not mutluluk_dileyenler %} <em>Kimse mutluluk dilemedi size. Ama üzülmeyin.</em>{% endif %}
+            {% for item in mutluluk_dileyenler  %}
+                <span class="kull-liste"> {{ item.user }}</span>
+            {% endfor %}
+        </div>
     </div>
-</div>
+
 {% endblock %}

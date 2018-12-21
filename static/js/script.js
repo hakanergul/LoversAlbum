@@ -1,8 +1,33 @@
 $(document).ready(function() {
+  $(".owl-carousel").owlCarousel({
+    loop: true,
+    margin: 10,
+    nav: true,
+    autoplay: true,
+    autoplayTimeout: 1000,
+    autoplayHoverPause: true,
+    responsiveClass: true,
+    responsive: {
+      0: {
+        items: 2,
+        nav: true
+      },
+      600: {
+        items: 4,
+        nav: false
+      },
+      1000: {
+        items: 6,
+        nav: true,
+        loop: false
+      }
+    }
+  });
+
   var waterfall = new Waterfall({
     containerSelector: ".wf-container",
     boxSelector: ".wf-box",
-    minBoxWidth: 250
+    minBoxWidth: 200
   });
 
   $(document).on("scroll", onScroll);

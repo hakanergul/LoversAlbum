@@ -5,6 +5,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import JsonResponse
+from django.utils.translation import gettext_lazy as _
 
 from ilan.forms import IlanForm, CommentForm
 from ilan.models import Ilan, Comment
@@ -43,7 +44,7 @@ class IlanEkleView(LoginRequiredMixin, CreateView):
 
 class IlanUpdateView(LoginRequiredMixin, UpdateView):
     model = Ilan
-    fields = ['baslik','metin','ilan_foto']
+    fields = ['baslik','metin','ilan_foto', 'ilan_fon_muzik', 'arkaplan_rengi']
     template_name = 'ilan_update_form.html'
     
 class IlanListView(ListView):
@@ -88,7 +89,8 @@ def ilan_detail(request, pk):
     return render(request, 'ilan_goster.html', {
     'ilan': ilan, 
     'mutluluk_dileyen_sayisi': ilan.mutluluk_dileyenler.count(), 
-    'yorumlar': yorumlar, 'new_comment': new_comment, 
+    'yorumlar': yorumlar, 
+    'new_comment': new_comment, 
     'comment_form': comment_form,
     'begeni': begeni,
     'begeni_kalp': begeni_kalp,

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'ckeditor',
     'ckeditor_uploader',
+    'colorfield',
 ]
 
 MIDDLEWARE = [
@@ -193,6 +194,11 @@ LOGIN_REDIRECT_URL = 'anasayfa'
 LOGOUT_REDIRECT_URL = 'anasayfa'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'hknrgl'
+EMAIL_HOST_PASSWORD = 'Fib.55152035'
+EMAIL_PORT = 587
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
