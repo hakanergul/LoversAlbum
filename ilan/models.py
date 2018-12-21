@@ -8,6 +8,7 @@ class Ilan(models.Model):
     baslik = models.CharField(max_length=30)
     metin =  RichTextUploadingField()
     arkaplan_rengi = ColorField(default='#ffffff')
+    arkaplan_resmi = models.ImageField(upload_to='ilan_fotolari/', blank=True)
     ilan_foto = models.ImageField(upload_to='ilan_fotolari/', default='350x150.png')
     ilan_fon_muzik = models.FileField(upload_to='ilan_fon_muzikleri/', blank=True)
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

@@ -20,13 +20,28 @@
     <div class="row">
 
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-            <h3>Yorumlarım</h3>
-            {% if not yorumlarim %} <em>Henüz yorum yapmadınız</em>{% endif %}
+
+
+        <div class="card">
+    <h5 class="card-header">Yorumlarım</h5>
+    <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">
+    {% if not yorumlarim %} <em>Henüz yorum yapmadınız</em> {% endif %}
             {% for yorumum in yorumlarim %}
             <div class="yorum-liste"> <a href =" ../ilan/{{ yorumum.ilan.id }} "> {{ yorumum.ilan.baslik }}</a> - <span class="tarih">{{ yorumum.created }}</span>
                 {{ yorumum.yorum_metni | truncatewords:5 }} 
             </div>
-            {% endfor %}
+            {% endfor %}</p>
+    </div>
+    </div>
+            {% comment %} <h3>Yorumlarım</h3>
+            {% if not yorumlarim %} <em>Henüz yorum yapmadınız</em> {% endif %}
+            {% for yorumum in yorumlarim %}
+            <div class="yorum-liste"> <a href =" ../ilan/{{ yorumum.ilan.id }} "> {{ yorumum.ilan.baslik }}</a> - <span class="tarih">{{ yorumum.created }}</span>
+                {{ yorumum.yorum_metni | truncatewords:5 }} 
+            </div>
+            {% endfor %} {% endcomment %}
         </div>
 
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">

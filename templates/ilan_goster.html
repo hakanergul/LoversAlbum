@@ -60,10 +60,13 @@
     <a href="whatsapp://send?text={{ request.META.HTTP_HOST }}/ilan/{{ ilan.id }}" data-action="share/whatsapp/share"><i class="fab fa-whatsapp-square fa-2x"></i></a>
 </div>
 
-
+{% if ilan.arkaplan_resmi  %} 
+<script>
+$(".main-section").css({ "background-image": "url('{{ ilan.arkaplan_resmi.url }}')", "background-position": "center center", "background-size": "cover", "background-repeat": "no-repeat"});
+</script>
+{% endif %}
 <script>
 $(".main-section").css("background-color", "{{ ilan.arkaplan_rengi }}");
-
 $("#yorum_ekle").click(function(e) {
     $('#yorum_formu').fadeOut(2000);
     $('#yorumeklendi').fadeIn(100);

@@ -410,6 +410,10 @@ header .header-content {
   text-align: center;
 }
 
+.main-section .row {
+  max-width: 100vw;
+}
+
 /**** MAİN SECTİON END ****/
 
 /**** FOOTER ****/
@@ -683,8 +687,8 @@ audio {
 
 .ilan-metni {
   margin: 10px auto;
-  min-height: 100vh;
-  height: 100vh;
+  min-height: 80vh;
+  word-wrap: break-word;
 }
 
 .ilan-alti {
