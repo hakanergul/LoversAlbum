@@ -31,7 +31,7 @@ class IlanEkleView(LoginRequiredMixin, CreateView):
         obj = form.save(commit = False)
         obj.user = self.request.user
         obj.save
-        if self.request.POST.get('action') == 'SAVE':
+        if self.request.POST.get('action') == 'Kaydet':
             return super().form_valid(form)
         ''' elif action == 'PREVIEW':
             preview = Ilan(
@@ -44,7 +44,7 @@ class IlanEkleView(LoginRequiredMixin, CreateView):
 
 class IlanUpdateView(LoginRequiredMixin, UpdateView):
     model = Ilan
-    fields = ['baslik','metin','ilan_foto', 'ilan_fon_muzik', 'arkaplan_rengi']
+    fields = ['baslik','metin','ilan_foto', 'ilan_fon_muzik', 'arkaplan_rengi', 'arkaplan_resmi']
     template_name = 'ilan_update_form.html'
     
 class IlanListView(ListView):

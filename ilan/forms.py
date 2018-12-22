@@ -4,18 +4,20 @@ from ilan.models import Ilan, Comment
 from django.conf import settings
 from django.utils.translation import gettext_lazy as _
 
-from ckeditor_uploader.widgets import CKEditorUploadingWidget
+from tinymce.models import HTMLField
 
 class IlanForm(forms.ModelForm):
-    metin = forms.CharField(widget=CKEditorUploadingWidget())
+    metin = HTMLField()
     class Meta:
         model = Ilan
-        fields = ['baslik', 'metin', 'ilan_foto', 'ilan_fon_muzik', 'arkaplan_rengi']
+        fields = ['baslik', 'metin', 'ilan_foto', 'ilan_fon_muzik', 'arkaplan_rengi', 'arkaplan_resmi']
         labels = {
             'baslik': _('Başlık'),
             'metin': _('İlan Metni'),
             'ilan_foto': _('İlan Görseli'),
             'ilan_fon_muzik': _('Fon Müziği'),
+            'arkaplan_rengi': _('Arkaplan Rengi'),
+            'arkaplan_resmi': _('Arkaplan Resmi'),
         }
 
 class CommentForm(forms.ModelForm):

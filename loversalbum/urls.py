@@ -15,7 +15,5 @@ urlpatterns = [
     path('register/', us_view.register, name='register'),
     path('dashboard/', us_view.dashboard, name='dashboard'),
     path('edit/', us_view.edit, name='edit'),
-    path('ckeditor/', login_required(include('ckeditor_uploader.urls'))), 
-    path('upload/', login_required(views.upload), name='ckeditor_upload'), 
-    path('browse/', login_required(views.browse), name='ckeditor_browse'),    
+    path('tinymce/', include('tinymce.urls')),    
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

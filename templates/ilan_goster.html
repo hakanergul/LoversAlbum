@@ -61,6 +61,12 @@
 </div>
 
 
+{% if ilan.arkaplan_resmi  %} 
+ <script>
+ $(".main-section").css({ "background-image": "url('{{ ilan.arkaplan_resmi.url }}')", "background-position": "center center", "background-size": "cover", "background-repeat": "no-repeat"});
+ </script>
+ {% endif %}
+ 
 <script>
 $(".main-section").css("background-color", "{{ ilan.arkaplan_rengi }}");
 
