@@ -4,10 +4,11 @@ from ilan.models import Ilan, Comment
 from django.conf import settings
 from django.utils.translation import gettext_lazy as _
 
-from ckeditor_uploader.widgets import CKEditorUploadingWidget
+from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
+
 
 class IlanForm(forms.ModelForm):
-    metin = forms.CharField(widget=CKEditorUploadingWidget())
+    metin = forms.CharField(widget=SummernoteWidget())
     class Meta:
         model = Ilan
         fields = ['baslik', 'metin', 'ilan_foto', 'ilan_fon_muzik', 'arkaplan_rengi', 'arkaplan_resmi']

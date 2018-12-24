@@ -2,11 +2,11 @@ from django.db import models
 from django.urls.base import reverse
 from django.conf import settings
 from colorfield.fields import ColorField
-from ckeditor_uploader.fields import RichTextUploadingField
+from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
 
 class Ilan(models.Model):
     baslik = models.CharField(max_length=30)
-    metin =  RichTextUploadingField()
+    metin =  models.TextField(blank=True)
     arkaplan_rengi = ColorField(default='#ffffff')
     arkaplan_resmi = models.ImageField(upload_to='ilan_fotolari/', blank=True)
     ilan_foto = models.ImageField(upload_to='ilan_fotolari/', default='350x150.png')

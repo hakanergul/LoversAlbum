@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
-    'tinymce',
+    'django_summernote',
     'colorfield',
 ]
 
@@ -128,6 +128,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
+
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'anasayfa'
 LOGOUT_REDIRECT_URL = 'anasayfa'
@@ -141,3 +142,73 @@ EMAIL_PORT = 587
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+SUMMERNOTE_THEME = 'bs4'
+
+
+SUMMERNOTE_CONFIG = {
+# Using SummernoteWidget - iframe mode
+'iframe': True, # or set False to use SummernoteInplaceWidget - no iframe mode
+
+# Using Summernote Air-mode
+'airMode': False,
+
+# Use native HTML tags (`<b>`, `<i>`, ...) instead of style attributes
+'styleWithSpan': False,
+
+# Set text direction : 'left to right' is default.
+'direction': 'ltr',
+
+# Change editor size
+'width': '100%',
+'height': '640',
+
+# Use proper language setting automatically (default)
+'lang': None,
+
+# Or, set editor language/locale forcely
+'lang': 'us-EN',
+
+# Customize toolbar buttons
+'toolbar': [
+    ['style', ['style']],
+    ['style', ['bold', 'italic', 'underline', 'clear']],
+    ['para', ['ul', 'ol', 'height']],
+    ['insert', ['link','picture']],
+],
+# Set common css/js media files
+'base_css': (
+    '//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css',
+),
+'base_js': (
+    '//code.jquery.com/jquery-1.9.1.min.js',
+    '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js',
+),
+'default_css': (
+    os.path.join(STATIC_URL, 'django_summernote/summernote.css'),
+    os.path.join(STATIC_URL, 'django_summernote/django_summernote.css'),
+),
+'default_js': (
+    os.path.join(STATIC_URL, 'django_summernote/jquery.ui.widget.js'),
+    os.path.join(STATIC_URL, 'django_summernote/jquery.iframe-transport.js'),
+    os.path.join(STATIC_URL, 'django_summernote/jquery.fileupload.js'),
+    os.path.join(STATIC_URL, 'django_summernote/summernote.min.js'),
+),
+
+# You can disable file upload feature.
+'disable_upload': False,
+
+'css': (
+    '//cdnjs.cloudflare.com/ajax/libs/codemirror/5.29.0/theme/monokai.min.css',
+),
+'codemirror': {
+    'mode': 'htmlmixed',
+    'lineNumbers': 'true',
+
+    # You have to include theme file in 'css' or 'css_for_inplace' before using it.
+    'theme': 'monokai',
+},
+
+'lazy': True,
+
+}
