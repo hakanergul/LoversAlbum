@@ -10,6 +10,8 @@ django-crispy-forms = "*"
 pillow = "*"
 django-guardian = "*"
 django-braces = "*"
+django-ckeditor-filebrowser-filer = "*"
+django-tinymce = "*"
 
 [dev-packages]
 

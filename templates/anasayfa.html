@@ -23,7 +23,7 @@
                             </div>
                         </div>
                     </div>
-                    <p><a href="/user/login/" class="btn btn-danger" id="hizli-basla">Hızlıca bir ilan oluştur</a></p>
+                    <p><a href={% if user.is_authenticated %}"/ilan/ekle/" {% else %} "/user/login" {% endif %} class="btn btn-danger" id="hizli-basla">Hızlıca bir ilan oluştur</a></p>
                 </div>
             </div>
         </div>

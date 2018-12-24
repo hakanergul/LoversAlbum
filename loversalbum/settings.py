@@ -124,7 +124,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
@@ -143,22 +143,15 @@ CKEDITOR_CONFIGS = {
             ['Source', '-', 'Bold', 'Italic']
         ],
         'toolbar_YourCustomToolbarConfig': [
-            {'name': 'document', 'items': ['Preview', 'Print', '-', 'Templates']},
-            {'name': 'clipboard', 'items': ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']},
-            '/',
+            {'name': 'document', 'items': ['Preview']},
             {'name': 'basicstyles',
-             'items': ['Bold', 'Italic', 'Underline', 'RemoveFormat']},
+             'items': ['Bold', 'Italic', 'Underline']},
             {'name': 'paragraph',
-             'items': ['Blockquote', '-',
-                       'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-']},
-            {'name': 'links', 'items': ['Link', 'Unlink', 'Anchor']},
+             'items': ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-']},
             {'name': 'insert',
-             'items': ['Image', 'HorizontalRule', 'Smiley', 'PageBreak']},
-            '/',
-            {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
+             'items': ['Image']},
+            {'name': 'styles', 'items': ['Format', 'Font', 'FontSize']},
             {'name': 'colors', 'items': ['TextColor', 'BGColor']},
-            {'name': 'tools', 'items': ['Maximize', 'ShowBlocks']},
-            {'name': 'about', 'items': ['About']},
             '/',
         ],
         'toolbar': 'YourCustomToolbarConfig',  # put selected toolbar config here
@@ -184,7 +177,7 @@ CKEDITOR_CONFIGS = {
             'clipboard',
             'dialog',
             'dialogui',
-            'elementspath'
+            'elementspath',
         ]),
     }
 }
